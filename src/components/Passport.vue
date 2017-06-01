@@ -1,31 +1,36 @@
 <template>
 
-  <div class="passport">
-    <div class="grid">
-      <div class="grid_item">
-        <div class="column">
-          <div class="column_item avatar"></div>
-          <div class="column_item id-number"></div>
-        </div>
-      </div>
-      <div class="grid_item">
-        <div class="column">
-          <div class="column_item column-item_top"></div>
-          <div class="column_item column-item_bottom"></div>
-        </div>
-      </div>
+  <article class="message" v-show="isVisible">
+    <div class="message-header">
+      {{ title }}
+
+      <button type="button" @click="hideModal">X</button>
     </div>
-  </div>
+
+    <div class="message-body">
+      {{ body }}
+    </div>
+  </article>
 
 </template>
 
 <script>
   export default {
-    name: 'passport'
-//    data () {
-//      return {
-//      }
-//    }
+    name: 'passport',
+    props: [
+      'title',
+      'body'
+    ],
+    methods: {
+      hideModal () {
+        this.isVisible = false
+      }
+    },
+    data () {
+      return {
+        isVisible: true
+      }
+    }
   }
 </script>
 
